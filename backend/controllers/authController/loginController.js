@@ -49,7 +49,7 @@ const loginController = async (req, res) => {
       expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000), // 3 days
       httpOnly: true,
       secure: process.env.NODE_ENV === "production", // Use 'secure' in production
-      sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax", // 'Lax' for localhost
+      sameSite: process.env.NODE_ENV === "production" ? "Lax" : "None", // 'Lax' for localhost
     };
 
     // Send response with token in cookie

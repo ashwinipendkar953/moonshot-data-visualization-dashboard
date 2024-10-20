@@ -19,6 +19,7 @@ export const fetchData = createAsyncThunk("data/fetch", async () => {
     const response = await axios.get(`${API_URL}/api/data`, {
       withCredentials: true,
     });
+    console.log(response);
     return response.data;
   } catch (error) {
     throw new Error(error.message);
