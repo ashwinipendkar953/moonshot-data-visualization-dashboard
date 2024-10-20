@@ -1,9 +1,10 @@
 // utils/googleAuth.js
 const fs = require("fs");
+const path = require("path");
 const { google } = require("googleapis");
 
 // Load the service account key JSON file
-const KEY_PATH = "./utils/googleSheetData.json"; // Adjust the path accordingly
+const KEY_PATH = path.join(__dirname, "googleSheetData.json");
 const keys = JSON.parse(fs.readFileSync(KEY_PATH, "utf8"));
 
 // Create a JWT client
