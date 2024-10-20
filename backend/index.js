@@ -11,15 +11,28 @@ const connectDB = require("./config/db");
 
 connectDB();
 
+// List of allowed origins
+const allowedOrigins = [
+  "https://moonshot-data-visualization-app.vercel.app",
+  "http://localhost:5173", // For local development
+];
+
+// Dynamic CORS configuration
 const corsOptions = {
-    origin: true, // Allows all origins
-    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
-    methods: ["GET", "POST", "OPTIONS"], // Allow these methods
-    allowedHeaders: ["Content-Type", "Authorization"], // Allow these headers
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true); // Allow the origin
+    } else {
+      callback(new Error("Not allowed by CORS")); // Block the origin
+    }
+  },
+  credentials: true, // Allow credentials (cookies)
+  methods: ["GET", "POST", "OPTIONS"], // Allowed methods
+  allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
 };
 
 app.use(cors(corsOptions));
-app.options('*', cors(corsOptions)); 
+app.options("*", cors(corsOptions));
 
 app.use(bodyParser.json());
 app.use(express.json());
