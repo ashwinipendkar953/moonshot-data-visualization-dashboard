@@ -11,12 +11,15 @@ const connectDB = require("./config/db");
 
 connectDB();
 
-app.use(
-  cors({
-    origin: process.env.FRONTEND_URL,
-    credentials: true,
-  })
-);
+const corsOptions = {
+    origin: true, // Allows all origins
+    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+    methods: ["GET", "POST", "OPTIONS"], // Allow these methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Allow these headers
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); 
 
 app.use(bodyParser.json());
 app.use(express.json());
