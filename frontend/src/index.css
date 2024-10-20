@@ -1,0 +1,38 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* padding: 30px; */
+  height: 100%;
+}
+
+.bar-chart {
+  max-width: 600px;
+}
+
+.dropdown-hover:hover .dropdown-menu {
+  display: block;
+  position: absolute;
+  right: 10px;
+}
+
+.date-range-picker-container {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack items vertically */
+  padding: 0 10px; /* Add padding */
+  box-sizing: border-box; /* Ensure padding does not affect width */
+}
+
+.date-range-picker {
+  width: 100%; /* Ensure the date range picker takes full width */
+}
+
+@media (max-width: 768px) {
+  .date-range-picker-container {
+    /* Adjust padding for smaller screens */
+    padding: 0 5px;
+  }
+}
